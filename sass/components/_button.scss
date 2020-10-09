@@ -1,0 +1,58 @@
+
+.btn{
+    &:link,
+    &:visited{
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 1.5rem 4rem;
+    display: inline-block;
+    border-radius: 10rem; /*a high enough number so it is nicely rounded.*/
+    /*transition property is defined on the original state.*/
+    transition: all .2s; /* another way to animate other then using @keyframes. shorthand: all properties are enabled to be animated. and a time: .2s*/    
+    position: relative;
+    font-size:1.6rem;
+    }
+    
+    &:hover{
+        transform: translateY(-4px); /*Yaxis goes from top to bottom. so to move up, is a negative value.*/
+        box-shadow: 0 1rem 2rem rgba($color-black,.2);
+            /*  x-axis  y-axis width/blur color&opacity */
+            &::after{
+                transform: scaleX(1.4) scaleY(1.6);
+                opacity:0;
+               
+               }
+        }
+    &:active {  /*when it is clicked.*/
+        transform: translateY(-.1rem);
+        box-shadow: 0 .5rem 1rem rgba($color-black, .2);
+    }
+    &--white{
+    background-color: white;
+    color: $color-grey-dark;
+    &::after{
+        background-color:#fff;
+    }
+    }
+    
+    &::after {
+        content:""; /* needs a content to aoppear*/
+        display: inline-block;
+        height:100%;
+        width:100%;
+        border-radius:10rem;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:-1;
+        transition: all .4s;
+    }
+    
+    &--animated{
+        animation: moveInTop .5s ease-out .75s;
+           /*          func time   style   delay*/
+    animation-fill-mode: backwards;
+    }
+    
+    
+}

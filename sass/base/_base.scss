@@ -1,0 +1,14 @@
+/* reset */
+*,
+*::after,
+*::before{
+    margin:0;
+    padding:0;
+    box-sizing: inherit;/*forces the boxsizing property to be inherited by all elements.*/
+}
+
+html{
+    // defines what 1rem is. this equals 10px.
+    font-size:62.5%; /*writing in % accomodates for user desined font size in their browser..say for accessiblity. default is 16px. if the user increases it to say 20px, this will format the page for that size.*/
+}
+

@@ -1,0 +1,187 @@
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem); }
+  80% {
+    transform: translateX(1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem); }
+  80% {
+    transform: translateX(-1rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+@keyframes moveInTop {
+  0% {
+    opacity: 0;
+    transform: translateY(3rem); }
+  100% {
+    opacity: 1;
+    transform: translate(0); } }
+
+/* reset */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+  /*forces the boxsizing property to be inherited by all elements.*/ }
+
+html {
+  font-size: 62.5%;
+  /*writing in % accomodates for user desined font size in their browser..say for accessiblity. default is 16px. if the user increases it to say 20px, this will format the page for that size.*/ }
+
+body {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  /* font-size:16px; */
+  line-height: 1.7;
+  color: #777;
+  padding: 3rem;
+  box-sizing: border-box;
+  /*the border/padding are not added to the total height/width.*/ }
+
+.heading-primary {
+  color: #fff;
+  text-transform: uppercase;
+  backface-visibility: hidden;
+  /*sometimes during animations, the elements have a bit of a shake along the Y axis. applying backface hidden to the parent element avoids that.*/
+  margin-bottom: 6rem; }
+  .heading-primary--main {
+    display: block;
+    font-size: 6rem;
+    font-weight: 400;
+    letter-spacing: 3.5rem;
+    animation-name: moveInLeft;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+    /*
+        animation-delay: 3s;
+        animation-iteration-count: 3;
+        */ }
+  .heading-primary--sub {
+    display: block;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 1.8rem;
+    animation: moveInRight 1s ease-out; }
+
+.btn:link, .btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 1.5rem 4rem;
+  display: inline-block;
+  border-radius: 10rem;
+  /*a high enough number so it is nicely rounded.*/
+  /*transition property is defined on the original state.*/
+  transition: all .2s;
+  /* another way to animate other then using @keyframes. shorthand: all properties are enabled to be animated. and a time: .2s*/
+  position: relative;
+  font-size: 1.6rem; }
+
+.btn:hover {
+  transform: translateY(-4px);
+  /*Yaxis goes from top to bottom. so to move up, is a negative value.*/
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.2);
+  /*  x-axis  y-axis width/blur color&opacity */ }
+  .btn:hover::after {
+    transform: scaleX(1.4) scaleY(1.6);
+    opacity: 0; }
+
+.btn:active {
+  /*when it is clicked.*/
+  transform: translateY(-0.1rem);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2); }
+
+.btn--white {
+  background-color: white;
+  color: #777; }
+  .btn--white::after {
+    background-color: #fff; }
+
+.btn::after {
+  content: "";
+  /* needs a content to aoppear*/
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 10rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all .4s; }
+
+.btn--animated {
+  animation: moveInTop .5s ease-out .75s;
+  /*          func time   style   delay*/
+  animation-fill-mode: backwards; }
+
+.row {
+  /*maxwidth instead of width: if there's enough available space, occupy 114rem, if viewport is smaller: occupy 100% of available space*/
+  max-width: 114rem;
+  /*standard for grid is 1140px. we set our rems to be 10px.*/
+  background-color: #eee;
+  margin: 0 auto;
+  /*center block elements inside of other block elements.*/
+  /*attribute selector: can go by class, src, alt etc*/ }
+  .row:not(:last-child) {
+    margin-bottom: 8rem; }
+  .row::after {
+    content: "";
+    display: table;
+    clear: both; }
+  .row [class^="col-"] {
+    /* '^' starts with "col-" '$=' ends with "col-" ; '*=' contains "col-"  ; */
+    float: left;
+    background-color: orangered; }
+    .row [class^="col-"]:not(:last-child) {
+      margin-right: 6rem; }
+  .row .col-1-of-2 {
+    width: calc((100% - 6rem) /2); }
+  .row .col-1-of-3 {
+    width: calc((100% - (2 * 6rem))/ 3); }
+  .row .col-2-of-3 {
+    width: calc(6rem +  (2 * ((100% - (2 * 6rem))/ 3))); }
+  .row .col-1-of-4 {
+    width: calc((100% - (3 * 6rem))/ 4); }
+  .row .col-2-of-4 {
+    width: calc(6rem + (2 * ((100% - (3 * 6rem))/ 4))); }
+  .row .col-3-of-4 {
+    width: calc( (2*(6rem)) + (3 * ((100% - (3 * 6rem))/ 4))); }
+
+.header {
+  height: 95vh;
+  /*first arg for bckimg sits on top of the second arg*/
+  background-image: linear-gradient(to right bottom, rgba(126, 213, 111, 0.8), rgba(40, 180, 133, 0.8)), url(../img/hero.jpg);
+  background-size: cover;
+  /* always fits the element (bk img) in the viewport or the parent element*/
+  background-position: top;
+  clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+  position: relative; }
+  .header__logo-box {
+    position: absolute;
+    top: 4rem;
+    left: 4rem; }
+  .header__logo {
+    height: 3.5rem; }
+  .header__text-box {
+    position: absolute;
+    top: 40%;
+    /* these the top and left borders start at 50%.*/
+    left: 50%;
+    /* that makes the box look like it is aligned slightly to the right(not center)*/
+    /*it is where you'd want the middle to be.*/
+    /*this can be achieved using the transform-translate*/
+    /*this is not in relation to the parent element but in relation to the element itself! so it shifts it back.*/
+    transform: translate(-50%, -50%);
+    text-align: center;
+    /*the button is actually just an anchor(text) so to, center it, this is the easiest fix*/ }
