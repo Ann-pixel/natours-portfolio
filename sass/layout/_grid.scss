@@ -1,7 +1,6 @@
 .row{
     /*maxwidth instead of width: if there's enough available space, occupy 114rem, if viewport is smaller: occupy 100% of available space*/
     max-width: $grid-width; /*standard for grid is 1140px. we set our rems to be 10px.*/
-    background-color:#eee;
     margin:0 auto; /*center block elements inside of other block elements.*/
     //everything except the last child
     &:not(:last-child){
@@ -14,7 +13,6 @@
             margin-right: $gutter-horizontal;       
         }
         float: left;
-        background-color: orangered;
     }
     .col-1-of-2{
         width: calc((100% - #{$gutter-horizontal}) /2);
