@@ -277,6 +277,41 @@ body {
     height: 100%;
     object-fit: cover; }
 
+.form {
+  /* '+' is an adjescent sibling selector. '~' is an all sibling selector. to use this, the sibling/s always have to be after the first sibling*/ }
+  .form__group:not(:last-child) {
+    margin-bottom: 2rem; }
+  .form__input {
+    font-family: inherit;
+    color: inherit;
+    font-size: 1.5rem;
+    padding: 1.5rem 2rem;
+    border-radius: 2px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border: none;
+    border-bottom: 3px solid transparent;
+    width: 90%;
+    display: block; }
+    .form__input:focus {
+      outline: none;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+      border-bottom: 3px solid #55c57a; }
+    .form__input:focus:invalid {
+      border-bottom: 3px solid #ff7730; }
+    .form__input::-webkit-input-placeholder {
+      color: #999; }
+  .form__lable {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-left: 2rem;
+    margin-top: 0.7rem;
+    display: block;
+    transition: all 0.3s; }
+  .form__input:placeholder-shown + .form__lable {
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-4rem); }
+
 .section-about {
   background-color: #f7f7f7;
   padding: 25rem 25rem;
@@ -300,6 +335,20 @@ body {
 .section-stories {
   padding: 15rem 0;
   position: relative; }
+
+.section-book {
+  padding: 15rem 0;
+  background-image: linear-gradient(to right bottom, #7ed56f, #28b485); }
+
+.book {
+  background-image: linear-gradient(105deg, rgba(255, 255, 255, 0.6) 0%, #fff 50%, transparent 50%), url(../img/nat-10.jpg);
+  background-size: cover;
+  height: 50rem;
+  border-radius: 3px;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2); }
+  .book__form {
+    width: 50%;
+    padding: 6rem; }
 
 .row {
   /*maxwidth instead of width: if there's enough available space, occupy 114rem, if viewport is smaller: occupy 100% of available space*/
