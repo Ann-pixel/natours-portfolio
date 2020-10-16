@@ -33,6 +33,14 @@
     &::after{
         background-color:#fff;
     }
+    }   
+    &--green{
+        background-color: $color-primary;
+        color: #fff;
+        &::after{
+            background-color:$color-primary;
+        }
+  
     }
     
     &::after {
@@ -77,4 +85,5 @@
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
         transform: translateY(0);
     }
+
 }
