@@ -1,5 +1,6 @@
 
 .btn{
+    &,
     &:link,
     &:visited{
     text-transform: uppercase;
@@ -11,6 +12,11 @@
     transition: all .2s; /* another way to animate other then using @keyframes. shorthand: all properties are enabled to be animated. and a time: .2s*/    
     position: relative;
     font-size:$default-font-size;
+
+//change for buttons
+        border: none;
+        cursor: pointer;
+
     }
     
     &:hover{
@@ -23,7 +29,9 @@
                
                }
         }
-    &:active {  /*when it is clicked.*/
+    &:active,
+    &:focus {  /*when it is clicked.*/
+        outline: none;
         transform: translateY(-.1rem);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }
