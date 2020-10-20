@@ -3,16 +3,38 @@
     max-width: $grid-width; /*standard for grid is 1140px. we set our rems to be 10px.*/
     margin:0 auto; /*center block elements inside of other block elements.*/
     //everything except the last child
+    @include respond(tab-port) {
+       max-width: 50rem;  
+       padding: 0 3rem;       
+    }
+
     &:not(:last-child){
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;         
+        }
     }
     @include clearFix;
     /*attribute selector: can go by class, src, alt etc*/
     [class ^= "col-"] {  /* '^' starts with "col-" '$=' ends with "col-" ; '*=' contains "col-"  ; */
         &:not(:last-child){
-            margin-right: $gutter-horizontal;       
+            margin-right: $gutter-horizontal; 
+
+            @include respond(tab-port){
+                margin-right: 0;
+                margin-bottom: $gutter-vertical-small;
+            }
         }
         float: left;
+
+        @include respond(tab-port){
+            width: 100% !important;
+        }
+
+
+
+
     }
     .col-1-of-2{
         width: calc((100% - #{$gutter-horizontal}) /2);

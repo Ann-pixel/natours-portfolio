@@ -30,8 +30,17 @@ html{
 @include respond(tab-port){
     font-size: 50%;        // want:1rem=8px  so, /16=50% 
 }
+
 @include respond(phone){
-    font-size: 37.5%;         
+    font-size: 37.5%;        // want:1rem=8px  so, /16=50% 
 }
 }
 
+body{
+    padding:3rem;
+    box-sizing: border-box; /*the border/padding are not added to the total height/width.*/
+   
+    @include respond(tab-port){
+    padding: 0;  
+    }
+}
