@@ -4,11 +4,34 @@
 *::before{
     margin:0;
     padding:0;
-    box-sizing: inherit;/*forces the boxsizing property to be inherited by all elements.*/
+    box-sizing: inherit;/*forces the boxsizing property to be inherited by all elements.*/ 
 }
 
 html{
-    // defines what 1rem is. this equals 10px.
+    // defines what 1rem is. this equals 10px. 10px/16px
     font-size:62.5%; /*writing in % accomodates for user desined font size in their browser..say for accessiblity. default is 16px. if the user increases it to say 20px, this will format the page for that size.*/
+
+// @include respond-phone{
+//     font-size: 50%;
+// }
+
+
+//for conflicting media queries, it is always the last one that applies.
+//eg: for a width of 500px: all of these queries will apply.
+//so go from bigger screen to smaller screen.
+//this ensures that the smallest of all conflicting  media queries apply
+
+@include respond(big-desk){
+    font-size: 75%;       // want:1rem=12px  so, 12/16= 75% 
+}
+@include respond(tab-land){
+    font-size: 56.25%;       // want:1rem=9px  so, 9/16=56.25% 
+}
+@include respond(tab-port){
+    font-size: 50%;        // want:1rem=8px  so, /16=50% 
+}
+@include respond(phone){
+    font-size: 37.5%;         
+}
 }
 

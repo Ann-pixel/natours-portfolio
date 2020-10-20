@@ -1,3 +1,17 @@
+/*
+0-600px:  phone
+600-900: tablet potrait mode
+900-1200: tablet landscape mode
+1200-1800: normal styles apply.
+1800: big screens
+*/
+/*
+$breakpoint argument choices:
+-phone
+-tab-port
+-tab-land
+-big-desk
+*/
 @keyframes moveInLeft {
   0% {
     opacity: 0;
@@ -38,6 +52,18 @@
 html {
   font-size: 62.5%;
   /*writing in % accomodates for user desined font size in their browser..say for accessiblity. default is 16px. if the user increases it to say 20px, this will format the page for that size.*/ }
+  @media (min-width: 112.5em) {
+    html {
+      font-size: 75%; } }
+  @media (max-width: 75em) {
+    html {
+      font-size: 56.25%; } }
+  @media (max-width: 56.25em) {
+    html {
+      font-size: 50%; } }
+  @media (max-width: 37.5em) {
+    html {
+      font-size: 37.5%; } }
 
 body {
   font-family: "Lato", sans-serif;
